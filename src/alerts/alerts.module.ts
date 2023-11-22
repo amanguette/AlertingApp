@@ -6,12 +6,12 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 
 @Global()
 @Module({
-  imports: [TypeOrmModule.forFeature([Alert])],
-  controllers: [AlertsController],
-  providers: [AlertsService],
-  // exports: [AlertsService]
-  exports: [TypeOrmModule]
+	imports: [TypeOrmModule.forFeature([Alert])],
+	controllers: [AlertsController],
+	providers: [AlertsService],
+	// exports: [AlertsService]
+	exports: [TypeOrmModule]
 })
 export class alertsModule {
-//   constructor(private alertsService: AlertsService) {}
+	// constructor(private alertsService: AlertsService) {}
 }

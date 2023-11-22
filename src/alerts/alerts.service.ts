@@ -60,21 +60,20 @@ export class AlertsService {
       alert = { 
         ...alert,
         ...rest,
-        updatedAt: new Date(Date.parse(new Date().toISOString()))
+        updatedAt: new Date()
       };
     } else {
       // If no existing alert was found, create a new alert with the specified values
       alert = new Alert();
       alert.originUrl = originUrl;
       alert.eventId = eventId;
-      alert.updatedAt = new Date(Date.parse(new Date().toISOString()));
+      if (alert.createdAt === undefined || alert.createdAt === null) {
+        alert.createdAt = new Date();
+      } else if (typeof alert.createdAt === 'string') {
+        alert.createdAt = new Date(alert.createdAt);
+      }
+      alert.updatedAt = new Date();
       Object.assign(alert, rest);
-    }
-
-    if (alert.createdAt === undefined || alert.createdAt === null) {
-      alert.createdAt = new Date();
-    } else if (typeof alert.createdAt === 'string') {
-      alert.createdAt = new Date(alert.createdAt);
     }
 
     // Save the alert to the database and return the resulting entity
