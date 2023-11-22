@@ -66,6 +66,10 @@ export class AlertsService {
   //   console.log(`create alert => ${JSON.stringify(alert)}`)
   //   this.alertsRepository.create(alert)
   // }
+
+
+  // avec origin_url et event_id, on regarde si une alerte triggered existe déjà, sinon on la crée (ou on la resolve selon le statut).
+  // -> on fait une recherche sur origin_url, event_id, alert_status = ‘resolved’
   async create(alert: alert): Promise<alert> {
     const newEntity = this.alertsRepository.create(alert);
     return this.alertsRepository.save(newEntity);

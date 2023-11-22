@@ -3,13 +3,16 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 
-// import { Alert } from './alerts/alerts.entity';
 import { alertsModule } from './alerts/alerts.module';
 import { Alert } from './alerts/alerts.entity';
+
+import { ticketsModule } from './tickets/tickets.module';
+import { Ticket } from './tickets/tickets.entity';
 
 @Module({
   imports: [
     alertsModule,
+    ticketsModule,
     TypeOrmModule.forRoot({
       type: 'postgres',
       host: 'localhost',
@@ -17,7 +20,7 @@ import { Alert } from './alerts/alerts.entity';
       username: 'postgres',
       password: 'root',
       database: 'alerting',
-      entities: [Alert],
+      entities: [Alert, Ticket],
       synchronize: true,
     }),
   ],
