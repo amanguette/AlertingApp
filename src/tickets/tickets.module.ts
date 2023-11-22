@@ -1,13 +1,13 @@
 import { Global, Module } from "@nestjs/common";
 import { TicketsController } from "./tickets.controller";
 import { TicketsService } from "./tickets.service";
+import { TypeOrmModule } from "@nestjs/typeorm";
+import { Ticket } from "./tickets.entity";
 
 @Global()
 @Module({
-    // imports
+    imports: [TypeOrmModule.forFeature([Ticket])],
     controllers: [TicketsController],
     providers: [TicketsService],
 })
-export class ticketsModule {
-//   constructor(private alertsService: AlertsService) {}
-}
+export class ticketsModule {}
