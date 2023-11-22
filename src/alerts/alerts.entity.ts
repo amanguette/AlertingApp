@@ -21,13 +21,13 @@ export class Alert {
     @Column('timestamptz', { name: 'created_at' })
     createdAt: Date | null
 
-    @Column('timestamptz', { name: 'updated_at' })
+    @Column('timestamptz', { name: 'updated_at', nullable: true })
     updatedAt: Date | null
 
-    @Column('timestamptz', { name: 'resolved_at' })
+    @Column('timestamptz', { name: 'resolved_at', nullable: true })
     resolvedAt: Date | null
 
-    @Column('varchar', { name: 'acknowledge', length: 45 })
+    @Column('varchar', { name: 'acknowledge', length: 45, nullable: true })
     acknowledge: string | null
     // renvoie 'prenom.nom'
 }
