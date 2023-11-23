@@ -1,8 +1,9 @@
 import { Global, Module } from '@nestjs/common';
-import { AlertsController } from './alerts.controller';
-import { AlertsService } from './alerts.service';
-import { Alert } from './alerts.entity';
 import { TypeOrmModule } from '@nestjs/typeorm';
+
+import { AlertsController } from './alerts.controller';
+import { Alert } from './alerts.entity';
+import { AlertsService } from './alerts.service';
 
 @Global()
 @Module({
@@ -10,7 +11,7 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 	controllers: [AlertsController],
 	providers: [AlertsService],
 	// exports: [AlertsService]
-	exports: [TypeOrmModule]
+	// exports: [TypeOrmModule]
 })
 export class alertsModule {
 	// constructor(private alertsService: AlertsService) {}
