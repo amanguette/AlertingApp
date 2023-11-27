@@ -13,12 +13,20 @@ export class AlertsService {
 		private readonly alertsRepository: Repository<Alert>,
 	) {}
 
-	getAlerts(): Promise<alert[]> {
-		return this.alertsRepository.find()
+	async getAlerts(): Promise<alert[]> {
+		const alerts = await this.alertsRepository.find() as alert[]
+		for (const alert in alerts) {
+			alerts[alert].alertStatus = alerts[alert].resolvedAt ? 'resolved' : 'triggered'
+		}
+		return alerts
 	}
 
-	getAlert(id: number): Promise<Alert> {
-		return this.alertsRepository.findOne({ where: { id } });
+	async getAlert(id: number): Promise<alert> {
+		const alert = await this.alertsRepository.findOne({ where: { id } });
+		return alert && { 
+			...alert,
+			alertStatus: alert.resolvedAt ? 'resolved' : 'triggered'
+		}
 	}
 
 	// avec origin_url et event_id, on regarde si une alerte triggered existe déjà, sinon on la crée (ou on la resolve selon le statut).

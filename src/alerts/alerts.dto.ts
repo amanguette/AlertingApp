@@ -1,3 +1,4 @@
+// /!\ createAlertDto unused now, think about reusing it or delete
 export class CreateAlertDto {
     id: number
     originUrl: string
