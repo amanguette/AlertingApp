@@ -17,6 +17,20 @@ import { Ticket } from './tickets.entity';
 	}
 
 	getTicket(id: number): Promise<Ticket> {
-		return this.TicketsRepository.findOne({ where: { id } });
+		return this.TicketsRepository.findOne({ where: { id } })
+	}
+	
+	async createOrUpdate(data: Partial<Ticket>): Promise<Ticket> {
+		const { id,  } = data;
+		let ticket = await this.TicketsRepository.findOne({where: {id}})
+		if (!ticket) {
+		  ticket = new Ticket()
+		  ticket.createdAt = new Date()
+		  ticket.status = 'triggered'
+		}
+		Object.assign(ticket, data)
+		ticket.updatedAt = new Date()
+		ticket.id = id
+		return this.TicketsRepository.save(ticket)
 	}
 }

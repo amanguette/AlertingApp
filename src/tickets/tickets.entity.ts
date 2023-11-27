@@ -1,4 +1,4 @@
-import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
+import { Column, Entity, JoinTable, ManyToMany, PrimaryGeneratedColumn } from 'typeorm';
 
 @Entity()
 export class Ticket {
@@ -19,4 +19,9 @@ export class Ticket {
 
 	@Column('varchar', { name: 'status', length: 45 })
 	status: string
+
+    // @ManyToMany(() => Ticket)
+    // @JoinTable()
+    // tickets: Ticket[]
+
 }
