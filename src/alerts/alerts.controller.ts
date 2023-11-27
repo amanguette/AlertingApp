@@ -19,18 +19,26 @@ export class AlertsController {
 
 	@Post()
 	async createOrUpdateAlert(@Body() data: alert) {
-		return this.alertsService.createOrUpdate(data);
+		return this.alertsService.createOrUpdate(data)
 		// /!\ createAlertDto unused now, think about reusing it or delete
 	}
 
 	@Get()
 	async getAlerts() : Promise<alert[]> {
-		return this.alertsService.getAlerts()
+		const alerts = await this.alertsService.getAlerts()
+		for (const alert in alerts) {
+			alerts[alert].alertStatus = alerts[alert].resolvedAt ? 'resolved' : 'triggered'
+		}
+		return alerts
 	}
 
 	// http://localhost:3000/alerts/1
 	@Get(':id')
 	async getAlert(@Param('id') id: number): Promise<alert> {
-		return this.alertsService.getAlert(id);
+		const alert = await this.alertsService.getAlert(id)
+		return alert && { 
+			...alert,
+			alertStatus: alert.resolvedAt ? 'resolved' : 'triggered'
+		}
 	}
 }

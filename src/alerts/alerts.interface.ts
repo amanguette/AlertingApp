@@ -6,5 +6,6 @@ export interface alert {
     createdAt?: Date | null,
     updatedAt?: Date | null,
     resolvedAt?: Date | null,
-    acknowledge?: string | null
+    acknowledge?: string | null,
+    alertStatus?: string | null
 }

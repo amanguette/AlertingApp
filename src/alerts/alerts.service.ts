@@ -13,7 +13,7 @@ export class AlertsService {
 		private readonly alertsRepository: Repository<Alert>,
 	) {}
 
-	getAlerts(): Promise<Alert[]> {
+	getAlerts(): Promise<alert[]> {
 		return this.alertsRepository.find()
 	}
 
