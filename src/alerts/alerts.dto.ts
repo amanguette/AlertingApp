@@ -1,22 +1,14 @@
-// import { IsInt, IsString } from "class-validator"
-
-// https://docs.nestjs.com/pipes#class-validator
+// /!\ createAlertDto unused now, think about reusing it or delete
 export class CreateAlertDto {
-    // @IsInt()
     id: number
-
-    // @IsString()
     originUrl: string
-
-    // @IsString()
     eventId: string
-
-    // @IsString()
     description: string
-
     createdAt: Date | null
     updatedAt: Date | null
     resolvedAt: Date | null
     acknowledge: string | null
 }
 
+// TODO: add validation pipes ?
+// https://docs.nestjs.com/pipes#class-validator
