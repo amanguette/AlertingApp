@@ -17,12 +17,7 @@ export class AlertsService {
 
 	async getAlerts(): Promise<Alert[]> {
 		const alerts = await this.alertsRepository.find()
-		console.log(alerts)
 		return this.alertApi.parseAlerts(alerts)
-		// for (const alert in alerts) {
-		// 	alerts[alert].alertStatus = alerts[alert].resolvedAt ? 'resolved' : 'triggered'
-		// }
-		// return alerts
 	}
 
 	async getAlert(id: number): Promise<Alert> {
@@ -42,14 +37,12 @@ export class AlertsService {
 		let alert = await this.alertsRepository.findOne({ where: { originUrl, eventId } });
 
 		if (alert) {
-			// If an existing alert was found, update it and update the updatedAt date with now
 			alert = { 
 				...alert,
 				...rest,
 				updatedAt: new Date()
 			};
 		} else {
-			// If no existing alert was found, create a new alert with the specified values
 			alert = new AlertEntity();
 			alert.originUrl = originUrl;
 			alert.eventId = eventId;
@@ -62,7 +55,6 @@ export class AlertsService {
 			Object.assign(alert, rest);
 		}
 
-		// Save the alert to the database and return the resulting entity
 		return this.alertsRepository.save(alert);
 	}
 
