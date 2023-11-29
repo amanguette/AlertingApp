@@ -1,5 +1,5 @@
-import { AlertEntity } from 'src/alerts/alerts.entity';
-import { Column, Entity, JoinTable, ManyToMany, PrimaryGeneratedColumn } from 'typeorm';
+import { AlertEntity } from 'src/alerts/alerts.entity'
+import { Column, Entity, JoinTable, ManyToMany, PrimaryGeneratedColumn } from 'typeorm'
 
 @Entity({ name: 'tickets' })
 export class Ticket {

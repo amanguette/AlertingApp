@@ -1,4 +1,4 @@
-import { Ticket } from 'src/tickets/tickets.entity';
+import { Ticket } from 'src/tickets/tickets.entity'
 
 export interface Alert {
     id: number,

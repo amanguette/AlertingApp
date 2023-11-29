@@ -1,12 +1,12 @@
-import { Module } from '@nestjs/common';
-import { TypeOrmModule } from '@nestjs/typeorm';
+import { Module } from '@nestjs/common'
+import { TypeOrmModule } from '@nestjs/typeorm'
 
-import { AlertEntity } from './alerts/alerts.entity';
-import { alertsModule } from './alerts/alerts.module';
-import { AppController } from './app.controller';
-import { AppService } from './app.service';
-import { Ticket } from './tickets/tickets.entity';
-import { ticketsModule } from './tickets/tickets.module';
+import { AlertEntity } from './alerts/alerts.entity'
+import { alertsModule } from './alerts/alerts.module'
+import { AppController } from './app.controller'
+import { AppService } from './app.service'
+import { Ticket } from './tickets/tickets.entity'
+import { ticketsModule } from './tickets/tickets.module'
 
 @Module({
   imports: [

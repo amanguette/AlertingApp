@@ -1,9 +1,9 @@
-import { AlertEntity } from './alerts.entity';
-import { Alert } from './alerts.model';
+import { AlertEntity } from './alerts.entity'
+import { Alert } from './alerts.model'
 
 export class AlertApi {
     public parseAlerts(alerts : AlertEntity[]) : Alert[] {
-        return alerts.map(alert => this.parseAlert(alert));
+        return alerts.map(alert => this.parseAlert(alert))
     }
 
     public parseAlert(rawAlert: AlertEntity) : Alert {

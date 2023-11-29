@@ -1,15 +1,15 @@
-import { Repository } from 'typeorm';
+import { Repository } from 'typeorm'
 
-import { Injectable } from '@nestjs/common';
-import { InjectRepository } from '@nestjs/typeorm';
+import { Injectable } from '@nestjs/common'
+import { InjectRepository } from '@nestjs/typeorm'
 
-import { Ticket } from './tickets.entity';
+import { Ticket } from './tickets.entity'
 
 @Injectable()
 	export class TicketsService {
 	constructor(
 		@InjectRepository(Ticket)
-		private readonly TicketsRepository: Repository<Ticket>,
+		private readonly TicketsRepository: Repository<Ticket>
 	) {}
 
 	getTickets(): Promise<Ticket[]> {
@@ -24,9 +24,9 @@ import { Ticket } from './tickets.entity';
 		const { id,  } = data;
 		let ticket = await this.TicketsRepository.findOne({where: {id}})
 		if (!ticket) {
-		  ticket = new Ticket()
-		  ticket.createdAt = new Date()
-		  ticket.status = 'triggered'
+			ticket = new Ticket()
+			ticket.createdAt = new Date()
+			ticket.status = 'triggered'
 		}
 		Object.assign(ticket, data)
 		ticket.updatedAt = new Date()

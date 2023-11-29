@@ -1,5 +1,5 @@
-import { Ticket } from 'src/tickets/tickets.entity';
-import { Column, Entity, Index, JoinTable, ManyToMany, PrimaryGeneratedColumn } from 'typeorm';
+import { Ticket } from 'src/tickets/tickets.entity'
+import { Column, Entity, Index, JoinTable, ManyToMany, PrimaryGeneratedColumn } from 'typeorm'
 
 @Entity({ name: 'alerts' })
 @Index(['originUrl','eventId'], { unique: true })

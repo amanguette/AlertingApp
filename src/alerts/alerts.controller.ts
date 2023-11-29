@@ -1,7 +1,7 @@
-import { Body, Controller, Get, Param, Post } from '@nestjs/common';
+import { Body, Controller, Get, Param, Post } from '@nestjs/common'
 
-import { Alert } from './alerts.model';
-import { AlertsService } from './alerts.service';
+import { Alert } from './alerts.model'
+import { AlertsService } from './alerts.service'
 
 @Controller('alerts')
 export class AlertsController {

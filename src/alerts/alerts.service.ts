@@ -1,11 +1,11 @@
-import { Repository } from 'typeorm';
+import { Repository } from 'typeorm'
 
-import { Injectable } from '@nestjs/common';
-import { InjectRepository } from '@nestjs/typeorm';
+import { Injectable } from '@nestjs/common'
+import { InjectRepository } from '@nestjs/typeorm'
 
-import { AlertApi } from './alerts.api';
-import { AlertEntity } from './alerts.entity';
-import { Alert } from './alerts.model';
+import { AlertApi } from './alerts.api'
+import { AlertEntity } from './alerts.entity'
+import { Alert } from './alerts.model'
 
 @Injectable()
 export class AlertsService {
