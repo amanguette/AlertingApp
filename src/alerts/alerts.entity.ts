@@ -1,8 +1,9 @@
-import { Column, Entity, Index, PrimaryGeneratedColumn } from 'typeorm';
+import { Ticket } from 'src/tickets/tickets.entity';
+import { Column, Entity, Index, JoinTable, ManyToMany, PrimaryGeneratedColumn } from 'typeorm';
 
-@Entity()
+@Entity({ name: 'alerts' })
 @Index(['originUrl','eventId'], { unique: true })
-export class Alert {
+export class AlertEntity {
 	@PrimaryGeneratedColumn()
 	id: number
 
@@ -27,4 +28,8 @@ export class Alert {
 	@Column('varchar', { name: 'acknowledge', length: 45, nullable: true })
 	acknowledge: string | null
 	// renvoie 'prenom.nom'
+
+	@ManyToMany(() => Ticket, ticket => ticket.alerts)
+	@JoinTable()
+	tickets: Ticket[]
 }

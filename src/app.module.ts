@@ -1,13 +1,12 @@
 import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
+
+import { AlertEntity } from './alerts/alerts.entity';
+import { alertsModule } from './alerts/alerts.module';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
-
-import { alertsModule } from './alerts/alerts.module';
-import { Alert } from './alerts/alerts.entity';
-
-import { ticketsModule } from './tickets/tickets.module';
 import { Ticket } from './tickets/tickets.entity';
+import { ticketsModule } from './tickets/tickets.module';
 
 @Module({
   imports: [
@@ -20,7 +19,7 @@ import { Ticket } from './tickets/tickets.entity';
       username: 'postgres',
       password: 'root',
       database: 'alerting',
-      entities: [Alert, Ticket],
+      entities: [AlertEntity, Ticket],
       synchronize: true,
     }),
   ],

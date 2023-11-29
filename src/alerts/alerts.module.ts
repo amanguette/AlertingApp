@@ -1,15 +1,16 @@
 import { Global, Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
 
+import { AlertApi } from './alerts.api';
 import { AlertsController } from './alerts.controller';
-import { Alert } from './alerts.entity';
+import { AlertEntity } from './alerts.entity';
 import { AlertsService } from './alerts.service';
 
 @Global()
 @Module({
-	imports: [TypeOrmModule.forFeature([Alert])],
+	imports: [TypeOrmModule.forFeature([AlertEntity])],
 	controllers: [AlertsController],
-	providers: [AlertsService],
+	providers: [AlertsService, AlertApi],
 	// exports: [AlertsService]
 	// exports: [TypeOrmModule]
 })

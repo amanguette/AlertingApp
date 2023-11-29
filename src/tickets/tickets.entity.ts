@@ -1,6 +1,7 @@
+import { AlertEntity } from 'src/alerts/alerts.entity';
 import { Column, Entity, JoinTable, ManyToMany, PrimaryGeneratedColumn } from 'typeorm';
 
-@Entity()
+@Entity({ name: 'tickets' })
 export class Ticket {
 	@PrimaryGeneratedColumn()
     id: number
@@ -20,8 +21,7 @@ export class Ticket {
 	@Column('varchar', { name: 'status', length: 45 })
 	status: string
 
-    // @ManyToMany(() => Ticket)
-    // @JoinTable()
-    // tickets: Ticket[]
-
+	@ManyToMany(() => AlertEntity, alert => alert.tickets)
+	@JoinTable()
+	alerts: AlertEntity[]
 }
